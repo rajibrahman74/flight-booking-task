@@ -2,7 +2,7 @@ import Tabs from "./components/Tabs";
 
 const App = () => {
   return (
-    <div className="my-24 mx-auto">
+    <div className="mt-16 mx-auto">
       <Tabs />
     </div>
   );

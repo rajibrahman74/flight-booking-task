@@ -12,9 +12,9 @@ const Tabs = () => {
   };
 
   return (
-    <div className="flex justify-center bg-white w-3/4 mx-auto p-8 rounded-md shadow-2xl">
+    <div className="flex justify-center bg-white w-3/4 mx-auto p-6 rounded-lg shadow-2xl">
       <div className="w-full max-w-6xl">
-        <div className="my-8 flex items-center gap-1">
+        <div className="mb-8 flex items-center gap-1">
           <MdFlight className="w-8 h-8 text-[#27922e]" />
           <span className="font-semibold text-base">Flights</span>
         </div>
