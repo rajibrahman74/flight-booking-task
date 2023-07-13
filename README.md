@@ -7,8 +7,8 @@ Welcome to my awesome project!
 This project is a React.js website that perform JSON Api. The motivation behind this project was to create a web application that helping others for Api knowledge.
 
 ## Features
-Flight booking application
-JSON Api
+1. Flight booking application
+2. JSON Api
 
 ## Installation
 
