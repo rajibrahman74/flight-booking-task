@@ -83,11 +83,11 @@ const OneWayForm = () => {
                 .map((city) => (
                   <li
                     key={city.code}
-                    className="cursor-pointer py-1 px-2 text-gray-800 hover:bg-gray-200 flex items-center gap-2"
+                    className="cursor-pointer py-3 text-gray-800 hover:bg-[#e7fddc] flex items-center gap-2"
                     onClick={() => handleFromSelect(city)}
                   >
-                    <MdLocationOn></MdLocationOn> {city.city_name},{" "}
-                    {city.country_name}
+                    <MdLocationOn className="w-5 h-5 text-[#27922e]"></MdLocationOn>
+                    {city.city_name}, {city.country_name}
                   </li>
                 ))}
             </ul>
@@ -111,10 +111,10 @@ const OneWayForm = () => {
                 .map((city) => (
                   <li
                     key={city.code}
-                    className="cursor-pointer py-1 px-2 text-gray-800 hover:bg-gray-200 flex items-center gap-2"
+                    className="cursor-pointer py-3 text-gray-800 hover:bg-[#e7fddc] flex items-center gap-2"
                     onClick={() => handleToSelect(city)}
                   >
-                    <MdLocationOn></MdLocationOn> {city.city_name},{" "}
+                    <MdLocationOn className="w-5 h-5 text-[#27922e]"></MdLocationOn>
                     {city.country_name}
                   </li>
                 ))}
