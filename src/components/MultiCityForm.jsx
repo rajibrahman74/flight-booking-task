@@ -7,6 +7,9 @@ import { TiDelete } from "react-icons/ti";
 
 import cities from "../../public/airport_autosuggetion.json";
 import Button from "../SharedComponents/Button";
+import PersonTypes from "../SharedComponents/AllDropdowns/Dropdowns/PersonTypes";
+import TicketTypes from "../SharedComponents/AllDropdowns/Dropdowns/TicketTypes";
+import PaymentTypes from "../SharedComponents/AllDropdowns/Dropdowns/PaymentTypes";
 
 const MultiCityForm = () => {
   const [formFields, setFormFields] = useState({
@@ -252,7 +255,10 @@ const MultiCityForm = () => {
           </div>
         );
       })}
-      <div className="flex items-end justify-end">
+      <div className="flex items-center justify-end gap-16">
+        <PersonTypes />
+        <TicketTypes />
+        <PaymentTypes />
         <Button />
       </div>
     </>
