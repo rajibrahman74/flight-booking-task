@@ -5,6 +5,7 @@ import { FaExchangeAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import cities from "../../public/airport_autosuggetion.json";
 import Button from "../SharedComponents/Button";
+import AllDropdowns from "../SharedComponents/AllDropdowns/AllDropdowns";
 
 const OneWayForm = () => {
   const [from, setFrom] = useState("");
@@ -159,7 +160,8 @@ const OneWayForm = () => {
           />
         </div>
       </div>
-      <div className="flex items-end justify-end">
+      <div className="flex items-center justify-between">
+        <AllDropdowns />
         <Button />
       </div>
     </form>
