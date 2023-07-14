@@ -6,6 +6,7 @@ import { MdLocationOn } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 
 import cities from "../../public/airport_autosuggetion.json";
+import Button from "../SharedComponents/Button";
 
 const MultiCityForm = () => {
   const [formFields, setFormFields] = useState({
@@ -252,12 +253,7 @@ const MultiCityForm = () => {
         );
       })}
       <div className="flex items-end justify-end">
-        <button
-          className="bg-[#27922e] hover:bg-[#165e1a] text-white font-bold py-3 px-8 focus:outline-none focus:shadow-outline rounded-full"
-          type="button"
-        >
-          Search
-        </button>
+        <Button />
       </div>
     </>
   );
