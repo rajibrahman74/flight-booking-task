@@ -124,14 +124,17 @@ const OneWayForm = () => {
                   city.city_name.toLowerCase().includes(to.toLowerCase())
                 )
                 .map((city) => (
-                  <li
+                  <div
                     key={city.code}
-                    className="cursor-pointer py-3 text-gray-800 hover:bg-[#e7fddc] flex items-center gap-2"
+                    className="cursor-pointer py-3 text-gray-800 hover:bg-[#e7fddc] flex items-center gap-2 md:w-[400px]"
                     onClick={() => handleToSelect(city)}
                   >
-                    <MdLocationOn className="w-5 h-5 text-[#27922e]"></MdLocationOn>
-                    {city.country_name}
-                  </li>
+                    <span className="flex items-center gap-2">
+                      <MdLocationOn className="w-5 h-5 text-[#27922e]"></MdLocationOn>
+                      {city.country_name}
+                    </span>
+                    <span>{city.code}</span>
+                  </div>
                 ))}
             </ul>
           )}
