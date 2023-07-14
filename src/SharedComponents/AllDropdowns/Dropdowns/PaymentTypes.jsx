@@ -45,13 +45,14 @@ const PaymentTypes = () => {
       <div>
         <button
           type="button"
-          className="inline-flex items-center gap-2 justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white font-medium text-gray-500 text-base hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100"
+          className="
+          inline-flex items-center justify-center w-full rounded-md px-4 py-2 bg-white text-md font-medium text-gray-500 hover:bg-gray-200 focus:outline-none"
           onClick={handleToggle}
         >
           {selectedCheckboxes.length > 0
             ? `${selectedCheckboxes.length} Payment Types `
             : "Payment Types"}{" "}
-          <BiSolidDownArrow></BiSolidDownArrow>
+          <BiSolidDownArrow className="w-4 h-3 text-black"></BiSolidDownArrow>
         </button>
       </div>
       {isOpen && (
