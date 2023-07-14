@@ -130,15 +130,18 @@ const MultiCityForm = () => {
             <form className="px-8 pt-2 pb-2">
               <div className="flex mb-4 mx-auto w-11/12">
                 <div className="w-1/3 pr-2">
-                  <div className="flex">
+                  <div className="relative flex">
                     <input
-                      className="shadow appearance-none border rounded w-full py-1.5 px-3 text-gray-700 text-[17px] leading-tight focus:outline-none focus:shadow-outline"
+                      className="relative text-sm placeholder-transparent transition-all outline-none peer disabled:cursor-not-allowed shadow appearance-none border rounded w-full py-3.5 px-3 text-gray-700 text-[18px] leading-tight focus:outline-none focus:shadow-outline font-semibold"
                       id={`from-${index}`}
                       type="text"
                       placeholder="From"
                       value={field.from}
                       onChange={(e) => handleFromChange(e, index)}
                     />
+                    <label className="absolute left-2 -top-4 z-[1] px-2 text-xs transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:content-['\00a0*'] peer-focus:-top-4 peer-focus:text-x peer-disabled:cursor-not-allowed peer-disabled:before:bg-transparent font-semibold text-[17px] text-gray-700 mt-1.5">
+                      From
+                    </label>
                     <button
                       className="border-2 border-gray-300 font-bold py-4 px-4 ml-2 rounded-full text-gray-400 focus:outline-none focus:shadow-outline"
                       type="button"
@@ -169,14 +172,19 @@ const MultiCityForm = () => {
                   )}
                 </div>
                 <div className="w-1/3 pr-2">
-                  <input
-                    className="shadow appearance-none border rounded w-full py-3.5 px-3 text-gray-700 text-[17px] leading-tight focus:outline-none focus:shadow-outline"
-                    id={`to-${index}`}
-                    type="text"
-                    placeholder="To"
-                    value={field.to}
-                    onChange={(e) => handleToChange(e, index)}
-                  />
+                  <div className="flex relative">
+                    <input
+                      className="relative text-sm placeholder-transparent transition-all outline-none peer disabled:cursor-not-allowed shadow appearance-none border rounded w-full py-3.5 px-3 text-gray-700 text-[18px] leading-tight focus:outline-none focus:shadow-outline font-semibold"
+                      id={`to-${index}`}
+                      type="text"
+                      placeholder="To"
+                      value={field.to}
+                      onChange={(e) => handleToChange(e, index)}
+                    />
+                    <label className="absolute left-2 -top-4 z-[1] px-2 text-xs transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:content-['\00a0*'] peer-focus:-top-4 peer-focus:text-x peer-disabled:cursor-not-allowed peer-disabled:before:bg-transparent font-semibold text-[16px] text-gray-700 mt-1.5">
+                      To
+                    </label>
+                  </div>
                   {field.to && (
                     <ul className="mt-2">
                       {cities
@@ -205,7 +213,7 @@ const MultiCityForm = () => {
                     onChange={(date) => handleDepartureChange(date, index)}
                     dateFormat="EEE, dd MMM yyyy"
                     placeholderText="Departure"
-                    className="shadow appearance-none border rounded w-full py-3.5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-3.5 px-3 text-[16px] leading-tight focus:outline-none focus:shadow-outline"
                     minDate={new Date()}
                     renderCustomHeader={({
                       date,
