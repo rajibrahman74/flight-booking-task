@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { MdFlight } from "react-icons/md";
 import OneWayForm from "./OneWayForm";
 import RoundTripForm from "./RoundTripForm";
 import MultiCityForm from "./MultiCityForm";
-import { MdFlight } from "react-icons/md";
 
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -46,9 +46,11 @@ const Tabs = () => {
             Multi-city
           </button>
         </div>
-        {activeTab === 0 && <OneWayForm />}
-        {activeTab === 1 && <RoundTripForm />}
-        {activeTab === 2 && <MultiCityForm />}
+        <div className="flex flex-col space-y-4">
+          {activeTab === 0 && <OneWayForm />}
+          {activeTab === 1 && <RoundTripForm />}
+          {activeTab === 2 && <MultiCityForm />}
+        </div>
       </div>
     </div>
   );
