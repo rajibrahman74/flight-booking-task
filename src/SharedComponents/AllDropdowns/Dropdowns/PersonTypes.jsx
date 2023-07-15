@@ -6,10 +6,13 @@ import { PiPerson } from "react-icons/pi";
 
 const PersonTypes = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState({
-    text: "Adult",
-    count: 1,
-  });
+  const [addPassanger, setAddPassanger] = useState(false)
+  const [selectedOption, setSelectedOption] = useState([
+    {
+      text: "Adult",
+      count: 1,
+    }
+  ]);
   const [options, setOptions] = useState([
     {
       text: "Adults",
@@ -58,6 +61,25 @@ const PersonTypes = () => {
     e.stopPropagation();
   };
 
+  
+ // updating the different types of passenger
+  const handlePeopleCount = (people) =>{
+    let newOptions = [...options]
+
+    newOptions.map((option)=>{
+       if(option.text === people){
+          option.count + 1
+       }
+    })
+    setAddPassanger(true)
+    setOptions(newOptions)
+  }
+
+
+  const getAllCustomer = () =>{
+    console.log(options)
+  }
+
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -66,7 +88,15 @@ const PersonTypes = () => {
           className="inline-flex items-center justify-center w-full rounded-md px-4 py-2 bg-white text-md font-medium text-gray-500 hover:bg-gray-200 focus:outline-none"
           onClick={handleToggle}
         >
-          {selectedOption.count} <span>{selectedOption.text}</span>
+          {/* {options[0].count} <span>{options[0].text}</span> */}
+          {addPassanger ? options.map((option, idx)=>{
+            return (
+              <div key={idx} className="mr-2">
+                <span>{option.count !== 0 ? option.text : null}</span>
+                {option.count !== 0 ? option.count : null}
+              </div>
+            )
+          }) : <>{options[0].count} <span>{options[0].text}</span></>}
           <BiSolidDownArrow className="w-4 h-3 text-black" />
         </button>
       </div>
@@ -101,6 +131,7 @@ const PersonTypes = () => {
                     onClick={(e) => {
                       handleDecrement(index);
                       handlePlusMinusClick(e);
+                      handlePeopleCount(option.text)
                     }}
                   >
                     <AiOutlineMinus size={16} />
@@ -116,6 +147,7 @@ const PersonTypes = () => {
                     onClick={(e) => {
                       handleIncrement(index);
                       handlePlusMinusClick(e);
+                      handlePeopleCount(option.text, 'plus')
                     }}
                   >
                     <AiOutlinePlus size={16} />
@@ -127,6 +159,7 @@ const PersonTypes = () => {
             <button
               type="button"
               className="text-[#47b610] font-semibold flex ms-auto me-4"
+              onClick={getAllCustomer}
             >
               Apply
             </button>
