@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 
 const TicketTypes = () => {
   const [selectedOption, setSelectedOption] = useState("Economy");
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const options = [
     "Economy",
@@ -11,6 +12,21 @@ const TicketTypes = () => {
     "Business Class",
     "First Class",
   ];
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -21,7 +37,7 @@ const TicketTypes = () => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <div>
         <button
           type="button"
@@ -33,7 +49,7 @@ const TicketTypes = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute -top-3 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div
             className="py-1 text-md"
             role="menu"

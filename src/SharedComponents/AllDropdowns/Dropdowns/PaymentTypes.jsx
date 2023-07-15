@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BiSolidDownArrow } from "react-icons/bi";
 
 const PaymentTypes = () => {
@@ -22,11 +22,28 @@ const PaymentTypes = () => {
     "Easypaisa",
   ];
 
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleShowAll = () => {
+  const handleShowAll = (event) => {
+    event.stopPropagation();
     setShowAll(!showAll);
   };
 
@@ -40,13 +57,16 @@ const PaymentTypes = () => {
     }
   };
 
+  const handleApply = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <div>
         <button
           type="button"
-          className="
-          inline-flex items-center justify-center w-full rounded-md px-4 py-2 bg-white text-md font-medium text-gray-500 hover:bg-gray-200 focus:outline-none"
+          className="inline-flex items-center justify-center w-full rounded-md px-4 py-2 bg-white text-md font-medium text-gray-500 hover:bg-gray-200 focus:outline-none"
           onClick={handleToggle}
         >
           {selectedCheckboxes.length > 0
@@ -56,7 +76,7 @@ const PaymentTypes = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-[25rem] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-5">
+        <div className="origin-top-right absolute -top-3 right-0 mt-2 md:w-[25rem] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-5">
           <div
             className="py-1"
             role="menu"
@@ -78,7 +98,7 @@ const PaymentTypes = () => {
                 >
                   <input
                     type="checkbox"
-                    className="mr-2 w-4 h-4 sm:w-5 sm:h-5 rounded form-checkbox"
+                    className="chk mr-2 w-4 h-4 sm:w-5 sm:h-5 rounded form-checkbox"
                     checked={selectedCheckboxes.includes(option)}
                     onChange={() => {}}
                   />
@@ -108,11 +128,12 @@ const PaymentTypes = () => {
           )}
           <span className="text-xs text-[#767676]">
             Tips: To Find Popular Payment Types, You Can Change Your
-            &quot;Country&#34; Setting (Located On Top-Right Menu).
+            &#34;Country&#34; Setting (Located On Top-Right Menu).
           </span>
           <hr className="my-4" />
           <button
             type="button"
+            onClick={handleApply}
             className="text-[#47b610] font-semibold flex ms-auto"
           >
             Apply

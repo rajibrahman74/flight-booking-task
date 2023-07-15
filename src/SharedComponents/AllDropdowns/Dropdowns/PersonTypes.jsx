@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { VscPerson } from "react-icons/vsc";
@@ -31,6 +31,22 @@ const PersonTypes = () => {
     },
   ]);
 
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   const handleToggle = () => {
     setIsOpen(!isOpen);
   };
@@ -58,21 +74,26 @@ const PersonTypes = () => {
     e.stopPropagation();
   };
 
+  const handleApply = () => {
+    setIsOpen(false);
+    // Add your apply logic here
+  };
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" ref={dropdownRef}>
       <div>
         <button
           type="button"
           className="inline-flex items-center justify-center w-full rounded-md px-4 py-2 bg-white text-md font-medium text-gray-500 hover:bg-gray-200 focus:outline-none"
           onClick={handleToggle}
         >
-          {selectedOption.count} <span>{selectedOption.text}</span>
+          {selectedOption.count}<span className="ml-1">{selectedOption.text}</span>
           <BiSolidDownArrow className="w-4 h-3 text-black" />
         </button>
       </div>
       {isOpen && (
         <div
-          className="origin-top-right absolute right-0 mt-2 w-[230px] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-4 px-1"
+          className="origin-top-right absolute -top-3 right-0 mt-2 w-[230px] rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-4 px-1"
           onClick={handleToggle}
         >
           <div
@@ -127,6 +148,7 @@ const PersonTypes = () => {
             <button
               type="button"
               className="text-[#47b610] font-semibold flex ms-auto me-4"
+              onClick={handleApply}
             >
               Apply
             </button>
