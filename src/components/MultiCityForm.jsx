@@ -4,12 +4,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FaExchangeAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
-
 import cities from "../../public/airport_autosuggetion.json";
-import Button from "../SharedComponents/Button";
 import PersonTypes from "../SharedComponents/AllDropdowns/Dropdowns/PersonTypes";
 import TicketTypes from "../SharedComponents/AllDropdowns/Dropdowns/TicketTypes";
 import PaymentTypes from "../SharedComponents/AllDropdowns/Dropdowns/PaymentTypes";
+import Button from "../SharedComponents/Button";
 
 const MultiCityForm = () => {
   const [formFields, setFormFields] = useState({
@@ -131,9 +130,9 @@ const MultiCityForm = () => {
         const field = formFields[index];
         return (
           <div className="-mb-5" key={index}>
-            <form className="px-8 pt-2 pb-2">
-              <div className="flex mb-4 mx-auto w-11/12">
-                <div className="w-1/3 pr-2">
+            <form className="px-8">
+              <div className="flex flex-col md:flex-row mb-4 mx-auto w-11/12">
+                <div className="md:w-1/2 pr-2 mb-2 md:mb-0">
                   <div className="relative flex">
                     <input
                       className="relative text-sm placeholder-transparent transition-all outline-none peer disabled:cursor-not-allowed shadow appearance-none border rounded w-full py-3.5 px-3 text-gray-700 text-[18px] leading-tight focus:outline-none focus:shadow-outline font-semibold"
@@ -169,7 +168,7 @@ const MultiCityForm = () => {
                             onClick={() => handleFromSelect(city, index)}
                           >
                             <span className="flex items-center gap-2">
-                              <MdLocationOn className="w-5 h-5 text-[#27922e]"></MdLocationOn>
+                              <MdLocationOn className="w-5 h-5 text-[#27922e]" />
                               {city.city_name}, {city.country_name}
                             </span>
                             <span>{city.code}</span>
@@ -178,7 +177,7 @@ const MultiCityForm = () => {
                     </ul>
                   )}
                 </div>
-                <div className="w-1/3 pr-2">
+                <div className="md:w-1/2 pr-2">
                   <div className="flex relative">
                     <input
                       className="relative text-sm placeholder-transparent transition-all outline-none peer disabled:cursor-not-allowed shadow appearance-none border rounded w-full py-3.5 px-3 text-gray-700 text-[18px] leading-tight focus:outline-none focus:shadow-outline font-semibold"
@@ -207,7 +206,7 @@ const MultiCityForm = () => {
                             onClick={() => handleToSelect(city, index)}
                           >
                             <span className="flex items-center gap-2">
-                              <MdLocationOn className="w-5 h-5 text-[#27922e]"></MdLocationOn>
+                              <MdLocationOn className="w-5 h-5 text-[#27922e]" />
                               {city.city_name}, {city.country_name}
                             </span>
                             <span>{city.code}</span>
@@ -216,7 +215,7 @@ const MultiCityForm = () => {
                     </ul>
                   )}
                 </div>
-                <div className="w-1/3">
+                <div className="md:w-1/2 pr-2 mt-2 md:mt-0">
                   <DatePicker
                     id={`departure-${index}`}
                     selected={field.departure}
@@ -242,11 +241,11 @@ const MultiCityForm = () => {
                 {index >= 2 && (
                   <div className="flex justify-end -me-20">
                     <button
-                      className=" py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      className="py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="button"
                       onClick={() => handleRemoveField(index)}
                     >
-                      <TiDelete className="h-9 w-9 text-[#767676] hover:text-black"></TiDelete>
+                      <TiDelete className="h-9 w-9 text-[#767676] hover:text-black" />
                     </button>
                   </div>
                 )}
@@ -255,7 +254,7 @@ const MultiCityForm = () => {
           </div>
         );
       })}
-      <div className="flex items-center justify-end gap-16">
+      <div className="flex flex-col md:flex-row items-center justify-end gap-16">
         <PersonTypes />
         <TicketTypes />
         <PaymentTypes />
