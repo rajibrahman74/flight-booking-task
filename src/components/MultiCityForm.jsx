@@ -118,19 +118,19 @@ const MultiCityForm = () => {
 
   return (
     <>
-      <div className="flex justify-end mb-2">
+      <div className="flex justify-end mb-2 relative">
         <button
-          className="bg-[#27922e] hover:bg-[#165e1a] text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+          className="absolute bottom-[10px] text-[#27922e] border border-[#27922e] hover:bg-[#e7fddc] font-bold py-2 px-6 rounded-md focus:outline-none focus:shadow-outline"
           type="button"
           onClick={handleAddField}
         >
-          Add
+          + Add Flight
         </button>
       </div>
       {Object.keys(formFields).map((index) => {
         const field = formFields[index];
         return (
-          <div className="mb-4" key={index}>
+          <div className="-mb-5" key={index}>
             <form className="px-8 pt-2 pb-2">
               <div className="flex mb-4 mx-auto w-11/12">
                 <div className="w-1/3 pr-2">
@@ -240,13 +240,13 @@ const MultiCityForm = () => {
                   />
                 </div>
                 {index >= 2 && (
-                  <div className="flex justify-end">
+                  <div className="flex justify-end -me-20">
                     <button
                       className=" py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="button"
                       onClick={() => handleRemoveField(index)}
                     >
-                      <TiDelete className="h-8 w-8 text-red-600"></TiDelete>
+                      <TiDelete className="h-9 w-9 text-[#767676] hover:text-black"></TiDelete>
                     </button>
                   </div>
                 )}
